@@ -1,7 +1,7 @@
 # JavaChatRoom
 基于Java的聊天程序（含服务器）
 
-##上传说明
+## 上传说明
 
 编写的代码包放入JavaChatRoom/src/
 
