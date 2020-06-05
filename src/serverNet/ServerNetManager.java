@@ -54,17 +54,16 @@ public class ServerNetManager {
 				try{
 					ChatBean bean=(ChatBean)inputStream.readObject();
 					log.write("Receive "+bean.type+" from "+socket.getInetAddress()+":"+socket.getPort());
-					if(bindedIDs.containsKey(socket))
-						switch (bean.type) {
-							case REQ_LOGIN:
-							case REQ_BIND:
-							case REQ_FORGET_PASSWORD:
-							case REQ_CHECK_CAPTCHA:
-							case REQ_GET_INFO:
-								break;
-							default:
-								bean.ID=bindedIDs.get(socket);
-						}
+					switch (bean.type) {
+						case REQ_LOGIN:
+						case REQ_BIND:
+						case REQ_FORGET_PASSWORD:
+						case REQ_CHECK_CAPTCHA:
+						case REQ_GET_INFO:
+							break;
+						default:
+							bean.ID = bindedIDs.getOrDefault(socket, -1);
+					}
 					parser.parse(bean,socket);
 				} catch (IOException e) {
 					discard(socket);
