@@ -41,6 +41,9 @@ public class ServerNetManager {
 			}
 		}
 	}
+	public int getPort() {
+		return listenSocket.getLocalPort();
+	}
 	private class ClientReader implements Runnable {
 		final private LBLInputStream inputStream;
 		final Socket socket;
@@ -62,7 +65,7 @@ public class ServerNetManager {
 						case REQ_GET_INFO:
 							break;
 						default:
-							bean.ID = bindedIDs.getOrDefault(socket, -1);
+							bean.ID = bindedIDs.getOrDefault(socket, -12306);
 					}
 					parser.parse(bean,socket);
 				} catch (IOException e) {

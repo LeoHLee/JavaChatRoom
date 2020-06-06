@@ -41,9 +41,9 @@ public class Main {
         JPanel labels=new JPanel();
         labels.setSize(400,200);
         labels.setLayout(new GridLayout(3,1));
-        JLabel ipLabel1=new JLabel("Internet IP: Pending...");
-        JLabel ipLabel2=new JLabel("LAN IP: Pending...");
-        JLabel notice=new JLabel("Tell your clients the above two IP addresses!");
+        JLabel ipLabel1=new JLabel("IP: Pending...");
+        JLabel ipLabel2=new JLabel("Port: Pending...");
+        JLabel notice=new JLabel("Tell your clients the above information!");
         ipLabel1.setHorizontalAlignment(SwingConstants.CENTER);
         ipLabel2.setHorizontalAlignment(SwingConstants.CENTER);
         notice.setHorizontalAlignment(SwingConstants.CENTER);
@@ -59,13 +59,20 @@ public class Main {
         gui.setSize(400,550);
         gui.setTitle("Server");
         gui.setVisible(true);
-        ipLabel1.setText("Internet IP: "+getInternetIP());
-        ipLabel2.setText("Local IP: "+getLocalIP());
+        String lip=getLocalIP();
+        ipLabel1.setText("IP: "+lip);
+        if(!getInternetIP().equals(lip))
+            notice.setText("Warning: NOT Internet IP! Try natapp.cn for Internet service.");
 
         //Launch server
         ServerNetManager network;
         try {
-            network = new ServerNetManager(13060);
+            try {
+                network = new ServerNetManager(13060);
+            } catch (IOException e) {
+                network = new ServerNetManager(0);
+            }
+            ipLabel2.setText("Port: "+network.getPort());
         } catch (IOException e) {
             System.err.println("Failed to launch server network!");
             return;
