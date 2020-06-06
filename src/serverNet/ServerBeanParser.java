@@ -131,13 +131,19 @@ public class ServerBeanParser implements Parser {
                     tryForward(bean);
                     reply = new ChatBean(REPLY_OK);
                     reply.message=bean.message;
-                    //todo: set message.messageTime
                     send(socket,reply);
                     break;
                 case REQ_FILE:
-                    if(friendIDInvalid(socket,bean)) return;
-                    fileTransfer(bean);
-                    send(socket,new ChatBean(REPLY_OK));
+                    if(friendIDInvalid(socket,bean)) break;
+//                    if(accountSys.LogIn(bean.ID,bean.password)!=1) {
+//                        send(socket,CHECKFAILED);
+//                        break;
+//                    }
+//                    bean.IPAddress=socket.getInetAddress().getHostAddress();
+//                    bean.portNo=socket.getPort();
+                    if(fileTransfer(bean))
+                        send(socket,new ChatBean(REPLY_OK));
+                    else send(socket,SERVERERROR);
                     break;
                 case REQ_ADJUST_GROUP_ORDER:
                     if(friendSys.AdjustGroupOrder(bean.ID,bean.groupID,bean.groupID2)==1)
@@ -212,7 +218,9 @@ public class ServerBeanParser implements Parser {
                     break;
                 case REQ_DELETE_RECORD:
                     if(friendIDInvalid(socket,bean)) break;
-                    messageSys.DeleteAllMessagewithOne(bean.ID,bean.friendID);
+                    if(messageSys.DeleteAllMessagewithOne(bean.ID,bean.friendID))
+                        send(socket,new ChatBean(REPLY_OK));
+                    else send(socket,SERVERERROR);
                     break;
                 default:
                     send(socket,new ChatBean(RECV_OFFLINE));
@@ -301,8 +309,9 @@ public class ServerBeanParser implements Parser {
     /**
      * transfer file
      * @param bean ChatBean of file message
+     * @return whether succeed
      */
-    private void fileTransfer(ChatBean bean) {
+    private boolean fileTransfer(ChatBean bean) {
         ChatBean forward=new ChatBean(RECV_FILE);
         forward.IPAddress=bean.IPAddress;
         forward.portNo=bean.portNo;
@@ -310,7 +319,7 @@ public class ServerBeanParser implements Parser {
         forward.ID=bean.friendID;
         forward.fileSize=bean.fileSize;
         forward.fileName=bean.fileName;
-        send(bean.friendID,forward);
+        return send(bean.friendID,forward);
     }
 
     /**
