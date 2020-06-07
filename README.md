@@ -58,4 +58,13 @@
 3. 运行设置：主类为serverMain.Main
 
 ## 客户端
-
+1. 将src/client文件夹作为项目的源代码目录
+2. 下载界面显示用的Fxml和图片文件，[下载链接](https://disk.pku.edu.cn:443/link/D98ED05E9154D818F7B4B3462D6B9775)
+3. 将Fxml文件夹放入client/View目录中；png_40文件夹放入client/com/uz/emojione/fx目录中；qq.mp3放至源代码同目录文件夹下
+4. 将lib文件夹下的以下jar设置为外部库
+   ```
+   jl1.0.1.jar
+   JavaFX目录下的所有内容
+   ```
+5. 运行设置：主类为View.Main
+6. 其他：为了避免不必要的编译器配置，强烈建议使用[IDEA](https://www.jetbrains.com/idea/)编译器运行客户端项目
