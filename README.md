@@ -1,5 +1,7 @@
 基于Java的聊天程序（含服务器）
 
+[TOC]
+
 # 特性
 
 - 好友私密对话
@@ -30,7 +32,6 @@
 ### 启动
 
 1. 双击运行chatServer.jar
-
 2. 输入数据库密码
 3. 若密码正确，将出现服务器主窗口，将窗体最上方的IP和端口（通常是13060）告诉您的用户即可
 4. 若IP地址不能从因特网(Internet)访问，会给出警告，此时仅有相同局域网内的客户端可以连接。解决方法：使用[北大VPN](https://its.pku.edu.cn/service_1_vpn_client.jsp)或其他方法获取因特网IP后重启服务器，或者使用内网穿透工具如[NATAPP](https://natapp.cn/article/natapp_newbie)将本地端口映射到域名。
@@ -38,12 +39,12 @@
 ### 重置
 
 1. 打开MySQL Command Line Client，输入密码
-
 2. 输入以下指令
 
    ```mysql
    drop database account;
    ```
+3. 重新启动服务器
 
 # 配置Java项目
 
