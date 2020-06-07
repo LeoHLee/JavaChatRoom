@@ -48,5 +48,6 @@
 # 配置Java项目
 
 服务器：将src/server文件夹作为项目的源代码目录即可，主类为serverMain.Main
-客户端：等待更新
+
+客户端：
 
