@@ -1,7 +1,5 @@
 基于Java的聊天程序（含服务器）
 
-[TOC]
-
 # 特性
 
 - 好友私密对话
@@ -48,7 +46,16 @@
 
 # 配置Java项目
 
-服务器：将src/server文件夹作为项目的源代码目录即可，主类为serverMain.Main
+## 服务器
 
-客户端：
+1. 将src/server文件夹作为项目的源代码目录
+2. 将lib文件夹下的以下jar设置为外部库
+   ```
+   activation.jar
+   javax.mail.jar
+   mysql-connector-java-8.0.20.jar
+   ```
+3. 运行设置：主类为serverMain.Main
+
+## 客户端
 
