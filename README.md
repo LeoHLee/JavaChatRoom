@@ -66,5 +66,5 @@
    jl1.0.1.jar
    JavaFX目录下的所有内容
    ```
-5. 运行设置：主类为View.Main
+5. 运行设置：主类为View.Main；运行后若遇“请输入IP地址”提示，请在生成的state.conf文件的第四行、第五行分别填写服务器的IP地址和端口号
 6. 其他：为了避免不必要的编译器配置，强烈建议使用[IDEA](https://www.jetbrains.com/idea/)编译器运行客户端项目
