@@ -14,7 +14,7 @@
 
 ## 客户端
 
-1. [下载地址](https://disk.pku.edu.cn:443/link/2E896D75C0A4AA11D67CE27617043C1F)
+1. [下载地址](https://github.com/LeoHLee/JavaChatRoom/releases/download/v1.1/client1.1.rar)
 2. 解压后使用记事本打开state.conf，在第四行，第五行分别填写服务器的地址和端口号
 3. Windows用户：可以运行lightChat.exe，弹出exe4j对话框后点击确定，即可启动
 4. 其他平台用户：如果安装了JRE，且支持JavaFX，那么可以直接运行GUI.jar
@@ -25,7 +25,7 @@
 
 1. 安装[Java运行环境](https://www.java.com/zh_CN/)
 2. 安装[MySQL Server](https://dev.mysql.com/downloads/mysql/)，记住设定的数据库密码。
-3. 下载[服务器jar](https://github.com/LeoHLee/JavaChatRoom/blob/master/chatServer.jar)
+3. 下载[服务器jar](https://github.com/LeoHLee/JavaChatRoom/releases/download/v1.1/chatServer.jar)
 
 ### 启动
 
